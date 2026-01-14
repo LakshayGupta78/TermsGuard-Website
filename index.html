@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TermsGuard - AI Document Analyzer</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Additional fonts for animation if needed, though we are simplifying -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Roboto:wght@900&family=Playfair+Display:ital,wght@1,700&family=Press+Start+2P&family=Bebas+Neue&family=Lobster&family=Orbitron:wght@700&family=Indie+Flower&family=Creepster&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="antialiased" id="body">
+    <!-- Header -->
+    <header>
+      <div class="nav-container">
+        <div class="flex items-center space-x-2">
+          <h1 class="text-xl font-semibold tracking-tight">TermsGuard</h1>
+        </div>
+        
+        <nav class="hidden md:flex items-center">
+          <a href="#home" class="nav-link">Overview</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#how-it-works" class="nav-link">How it Works</a>
+        </nav>
+
+        <div class="flex items-center space-x-6">
+          <div id="theme-button" aria-label="Toggle Theme">
+            <div id="theme-button-slider"></div>
+          </div>
+          <a
+            href="#analyzer"
+            class="hidden md:block btn-primary text-sm"
+          >
+            Analyze
+          </a>
+          <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="text-sm font-medium text-gray-400 hover:text-white">Overview</a>
+          <a href="#features" class="text-sm font-medium text-gray-400 hover:text-white">Features</a>
+          <a href="#how-it-works" class="text-sm font-medium text-gray-400 hover:text-white">How It Works</a>
+          <a href="#analyzer" class="btn-primary text-center">Analyze Document</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section id="home" class="text-center max-w-4xl mx-auto animate-fade-in">
+        <h1 class="hero-title mb-6">
+          Understand what you sign.
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-500 mb-10 leading-relaxed font-light">
+          TermsGuard uses advanced AI to analyze contracts, highlighting risks and simplifying complex terms into plain English.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#analyzer" class="btn-primary min-w-[160px]">
+            Start Analysis
+          </a>
+          <a href="#how-it-works" class="text-accent hover:underline font-medium">
+            Learn how it works >
+          </a>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="py-24 border-b border-gray-800/50">
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="feature-card rounded-2xl">
+            <div class="feature-icon">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Risk Detection</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Automatically identifies clauses that may pose a liability or unfair obligation.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card rounded-2xl">
+            <div class="feature-icon">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Plain Summaries</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Converts legalese into clear, concise summaries you can actually read.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card rounded-2xl">
+            <div class="feature-icon">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Multi-Language</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Supports document analysis in multiple languages for global applicability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="py-24">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-4">How it Works</h2>
+          <p class="text-gray-500">Three simple steps to peace of mind.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center text-2xl font-semibold mb-6 text-white">
+              1
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Upload</h3>
+            <p class="text-gray-500">Drag & drop your document image (PNG or JPG).</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center text-2xl font-semibold mb-6 text-white">
+              2
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Analyze</h3>
+            <p class="text-gray-500">Our AI scans for risks and summarizes key points.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center text-2xl font-semibold mb-6 text-white">
+              3
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Review</h3>
+            <p class="text-gray-500">Get a clear, actionable report in seconds.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data Protection Section -->
+      <section id="data-protection" class="py-24 border-b border-gray-800/50">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-4">Your Privacy Matters</h2>
+          <p class="text-gray-500">We take data protection seriously. Here's our commitment to you.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+          <!-- Point 1 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">No Data Storage</h3>
+            <p class="text-gray-500">Your documents are processed in real-time and never stored on our servers.</p>
+          </div>
+
+          <!-- Point 2 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">No AI Training</h3>
+            <p class="text-gray-500">Your documents are not used to train Gemini or any other AI models.</p>
+          </div>
+
+          <!-- Point 3 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Secure Processing</h3>
+            <p class="text-gray-500">All analysis is done over encrypted connections for maximum security.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analyzer Section -->
+      <section id="analyzer" class="py-24 bg-gray-900/30 rounded-3xl">
+        <div class="max-w-3xl mx-auto text-center px-6">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-6">Analyze Document</h2>
+          <p class="text-lg text-gray-500 mb-10">
+            Securely upload your contract for instant analysis.
+          </p>
+          
+          <div
+            id="drop-zone"
+            class="relative group cursor-pointer p-12 flex flex-col items-center justify-center min-h-[240px] border-2 border-dashed border-gray-700 rounded-xl hover:border-blue-500 transition-colors"
+          >
+            <input
+              id="file-upload"
+              name="file-upload"
+              type="file"
+              class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+              accept="image/png, image/jpeg"
+            />
+            
+            <div id="upload-ui" class="text-center z-10 pointer-events-none">
+              <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-500">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+              </div>
+              <p class="text-lg font-medium mb-1">Click to upload or drag and drop</p>
+              <p class="text-sm text-gray-500">PNG, JPG up to 10MB</p>
+            </div>
+
+            <img
+              id="preview-image"
+              src=""
+              alt="Preview"
+              class="hidden max-h-[240px] rounded-lg shadow-lg z-10"
+            />
+          </div>
+
+          <div class="mt-10">
+            <button
+              id="analyze-button"
+              class="btn-primary w-full md:w-auto min-w-[200px] disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+            >
+              <span id="button-text">Analyze Now</span>
+              <span id="button-spinner" class="hidden flex items-center justify-center">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Results Modal -->
+    <div
+      id="results-modal"
+      class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300"
+    >
+      <div class="glass-panel w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col relative animate-fade-in">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center bg-white/5">
+          <h2 class="text-2xl font-bold">Analysis Results</h2>
+          <button id="close-modal-button" class="text-gray-400 hover:text-white transition p-2 rounded-full hover:bg-white/10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div id="modal-content" class="p-8 overflow-y-auto custom-scrollbar">
+          <!-- Content injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center py-10 border-t border-white/5 relative z-10 bg-black/50 backdrop-blur-xl">
+      <p class="text-gray-500 text-sm">
+        &copy; 2025 TermsGuard. Designed with <span class="text-pink-500">♥</span> for the future.
+      </p>
+    </footer>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
