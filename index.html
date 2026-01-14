@@ -85,6 +85,107 @@
         </div>
       </section>
 
+      <!-- Chrome Extension Section -->
+      <section id="extension" class="py-24 border-b border-gray-800/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left: Content -->
+            <div class="text-center md:text-left">
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+                <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.953 6.848c.062.003.123.006.186.006 6.627 0 12-5.373 12-12 0-.691-.058-1.369-.169-2.025z"/>
+                </svg>
+                <span class="text-sm font-medium text-blue-400">Chrome Extension</span>
+              </div>
+              
+              <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Scan Any Page<br/>Instantly
+              </h2>
+              
+              <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                Get the TermsGuard Chrome extension and analyze any Terms of Service, Privacy Policy, or contract directly in your browser with one click.
+              </p>
+
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  One-click page scanning
+                </li>
+                <li class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Instant risk analysis
+                </li>
+                <li class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Works on any website
+                </li>
+              </ul>
+
+              <a href="#" class="btn-primary inline-flex items-center gap-2" id="extension-cta">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.953 6.848c.062.003.123.006.186.006 6.627 0 12-5.373 12-12 0-.691-.058-1.369-.169-2.025z"/>
+                </svg>
+                Add to Chrome — It's Free
+              </a>
+            </div>
+
+            <!-- Right: Extension Preview -->
+            <div class="relative flex justify-center">
+              <div class="extension-preview">
+                <!-- Browser Mockup -->
+                <div class="browser-frame">
+                  <div class="browser-header">
+                    <div class="browser-dots">
+                      <span class="dot red"></span>
+                      <span class="dot yellow"></span>
+                      <span class="dot green"></span>
+                    </div>
+                    <div class="browser-url">
+                      <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                      </svg>
+                      <span>terms-of-service.com</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Extension Popup Preview -->
+                  <div class="popup-preview">
+                    <div class="popup-header">
+                      <div class="popup-logo">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span>TermsGuard</span>
+                      </div>
+                    </div>
+                    <div class="popup-body">
+                      <div class="risk-preview high">
+                        <span class="risk-dot">🔴</span>
+                        <span>Data may be shared with third parties</span>
+                      </div>
+                      <div class="risk-preview medium">
+                        <span class="risk-dot">🟡</span>
+                        <span>Arbitration clause detected</span>
+                      </div>
+                      <div class="risk-preview low">
+                        <span class="risk-dot">🟢</span>
+                        <span>Standard cookie policy</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Features Section -->
       <section id="features" class="py-24 border-b border-gray-800/50">
         <div class="grid md:grid-cols-3 gap-8">
