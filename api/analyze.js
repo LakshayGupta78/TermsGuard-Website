@@ -57,7 +57,7 @@ export default async function handler(req, res) {
     }
 
     // CORRECTED: Reverted to the correct and latest Gemini model name.
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
     const systemPrompt = `You are an AI legal assistant named TermsGuard. Analyze legal document images. 
         1. Provide a concise, easy-to-understand summary of the document's purpose.
