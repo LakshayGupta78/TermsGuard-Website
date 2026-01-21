@@ -56,8 +56,8 @@ export default async function handler(req, res) {
         .json({ error: "Server configuration error: API key not found." });
     }
 
-    // CORRECTED: Reverted to the correct and latest Gemini model name.
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    // Using Google's Gemini 2.5 Flash model for fast, intelligent document analysis.
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     const systemPrompt = `You are an AI legal assistant named TermsGuard. Analyze legal document images. 
         1. Provide a concise, easy-to-understand summary of the document's purpose.
