@@ -31,32 +31,28 @@ export default async function handler(req, res) {
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
-    const prompt = `You are a legal document analyzer. Analyze the following webpage content and identify any risky clauses, terms of service issues, or concerning legal language.
+    const prompt = `You are an expert legal document analyzer specializing in privacy policies and terms of service. Analyze the following webpage content and identify ALL risky clauses, concerning terms, or potential issues for users.
 
-You MUST respond with valid JSON only, no markdown formatting or code blocks. Use this exact structure:
+IMPORTANT: You MUST identify risks if any of these exist in the document:
+- HIGH RISK: Data selling/sharing with third parties, unlimited data collection, account termination clauses, liability waivers, forced arbitration, class action waivers, perpetual licenses to user content
+- MEDIUM RISK: Cookie tracking, analytics collection, data retention policies, automated decision making, location tracking, cross-device tracking, marketing communications
+- LOW RISK: Standard terms acceptance, minor privacy notices, typical cookie usage, basic data collection for service functionality
+
+You MUST respond with valid JSON only. Keep the summary under 250 characters. Use this structure:
 {
-  "summary": "A brief 2-3 sentence overview of what this page contains and its overall risk level",
+  "summary": "Brief 1-2 sentence overview (max 250 chars)",
   "risks": [
-    {
-      "severity": "high",
-      "description": "Clear explanation of the risky clause in plain English"
-    },
-    {
-      "severity": "medium", 
-      "description": "Clear explanation of the risky clause in plain English"
-    },
-    {
-      "severity": "low",
-      "description": "Clear explanation of the risky clause in plain English"
-    }
+    {"severity": "high", "description": "Explanation in plain English"},
+    {"severity": "medium", "description": "Explanation in plain English"},
+    {"severity": "low", "description": "Explanation in plain English"}
   ]
 }
 
 Severity must be exactly "high", "medium", or "low" (lowercase).
-If no significant risks are found, return an empty risks array.
+Be thorough - most privacy policies and ToS documents have multiple risks. Only return empty risks array if the document is truly risk-free.
 
 Page content:
-${pageContent.substring(0, 30000)}`;
+${pageContent.substring(0, 25000)}`;
 
     const geminiResponse = await fetch(apiUrl, {
       method: "POST",
