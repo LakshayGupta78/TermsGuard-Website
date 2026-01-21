@@ -33,17 +33,26 @@ export default async function handler(req, res) {
 
     const prompt = `You are a legal document analyzer. Analyze the following webpage content and identify any risky clauses, terms of service issues, or concerning legal language.
 
-Respond in JSON format with this structure:
+You MUST respond with valid JSON only, no markdown formatting or code blocks. Use this exact structure:
 {
   "summary": "A brief 2-3 sentence overview of what this page contains and its overall risk level",
   "risks": [
     {
-      "severity": "high|medium|low",
+      "severity": "high",
+      "description": "Clear explanation of the risky clause in plain English"
+    },
+    {
+      "severity": "medium", 
+      "description": "Clear explanation of the risky clause in plain English"
+    },
+    {
+      "severity": "low",
       "description": "Clear explanation of the risky clause in plain English"
     }
   ]
 }
 
+Severity must be exactly "high", "medium", or "low" (lowercase).
 If no significant risks are found, return an empty risks array.
 
 Page content:
@@ -57,6 +66,7 @@ ${pageContent.substring(0, 30000)}`;
         generationConfig: {
           temperature: 0.3,
           maxOutputTokens: 2048,
+          responseMimeType: "application/json"
         }
       })
     });
@@ -73,15 +83,46 @@ ${pageContent.substring(0, 30000)}`;
     const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
     
     if (text) {
-      // Extract JSON from response
-      const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || text.match(/\{[\s\S]*\}/);
-      const jsonStr = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : text;
-      
       try {
-        const parsed = JSON.parse(jsonStr);
-        return res.status(200).json(parsed);
-      } catch {
-        return res.status(200).json({ summary: text, risks: [] });
+        // Try to parse as JSON directly first (preferred when responseMimeType is set)
+        const parsed = JSON.parse(text);
+        
+        // Validate and normalize the response structure
+        const normalized = {
+          summary: parsed.summary || "Analysis complete.",
+          risks: Array.isArray(parsed.risks) ? parsed.risks.map(risk => ({
+            severity: (risk.severity || 'low').toLowerCase(),
+            description: risk.description || risk.risk || String(risk)
+          })) : []
+        };
+        
+        return res.status(200).json(normalized);
+      } catch (parseError) {
+        // If direct parse fails, try to extract JSON from text
+        const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/) || 
+                          text.match(/(\{[\s\S]*\})/);
+        
+        if (jsonMatch) {
+          try {
+            const extracted = JSON.parse(jsonMatch[1].trim());
+            const normalized = {
+              summary: extracted.summary || "Analysis complete.",
+              risks: Array.isArray(extracted.risks) ? extracted.risks.map(risk => ({
+                severity: (risk.severity || 'low').toLowerCase(),
+                description: risk.description || risk.risk || String(risk)
+              })) : []
+            };
+            return res.status(200).json(normalized);
+          } catch {
+            // Fall through to summary fallback
+          }
+        }
+        
+        // Final fallback - return as summary with no risks
+        return res.status(200).json({ 
+          summary: text.substring(0, 500), 
+          risks: [] 
+        });
       }
     }
 
@@ -92,3 +133,4 @@ ${pageContent.substring(0, 30000)}`;
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+
